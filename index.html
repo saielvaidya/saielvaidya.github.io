@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saiel Vaidya</title>
+<meta name="description" content="Saiel Vaidya: computer science student building machine learning systems, vector search and AI agents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav aria-label="Main">
+  <div class="pill">
+    <a class="mark" href="#top" aria-label="Back to top">s</a>
+    <div class="links" id="links">
+      <a href="#about">About</a><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#playground">Playground</a><a class="keep" href="#contact">Contact</a>
+    </div>
+    <button class="kbtn" type="button" id="kopen" aria-label="Open quick menu"><span>Menu</span><kbd>⌘K</kbd></button>
+  </div>
+</nav>
+
+<main id="top">
+  <header class="wrap hero">
+    <div>
+            <h1>Saiel <em>Vaidya</em></h1>
+      <p class="role">AI engineer in training. I build <span id="ticker">vector search engines</span>, and when I'm not, I'm probably playing sports.</p>
+      <div class="cta">
+        <a class="btn solid" href="#contact">Get in touch</a>
+        <a class="btn" href="#projects">See my work</a>
+      </div>
+    </div>
+    <div class="fig" id="cloud" role="img" aria-label="A rotating cloud of points that switches between a layered vector search graph and a ball">
+      <canvas id="cv"></canvas>
+      <div class="seg" role="group" aria-label="Cloud shape">
+        <button type="button" id="sIdx" aria-pressed="true">Vector index</button>
+        <button type="button" id="sBall" aria-pressed="false">Game ball</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section id="glance" style="padding-top:clamp(40px,6vw,80px)">
+      <div class="bento">
+        <div class="card now">
+          <h3><i></i>Right now</h3>
+          <dl>
+            <div><dt>Researching</dt><dd>Multi-agent module clustering at Laurier</dd></div>
+            <div><dt>Leading</dt><dd>A consulting team for VYPA Technologies</dd></div>
+            <div><dt>Building</dt><dd>An HNSW vector search engine, from scratch</dd></div>
+            <div><dt>Studying</dt><dd>BSc Computer Science, Wilfrid Laurier</dd></div>
+          </dl>
+        </div>
+        <div class="card metric"><b class="hot">95.5%</b><span><small>recall@10, HNSW from scratch</small>on 10,000 vectors in Python and NumPy</span></div>
+        <div class="card metric"><b>200 ms</b><span><small>p95 search latency</small>FAISS retrieval over 10K satellite images</span></div>
+        <div class="card metric"><b>+40%</b><span><small>Recall@10 at Azeonics</small>from contrastive ViT fine-tuning</span></div>
+        <div class="card metric"><b>0.81 F1</b><span><small>equipment-failure prediction</small>up from 0.54 with gradient boosting</span></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="head"><h2>About</h2><p>Models are the fun part. Making them fast, measurable and reliable is the job.</p></div>
+      <div class="about">
+        <div>
+          <p class="lead">I like the part of AI where models meet real systems: latency budgets, retrieval quality, and the tests that keep it honest.</p>
+          <p>I study <b>Computer Science at Wilfrid Laurier University</b> and work as an <b>undergraduate research assistant</b>, building a multi-agent negotiation algorithm that reorganizes a codebase's modules under a stability budget.</p>
+          <p>Last summer I was a <b>backend and ML systems intern at Azeonics</b>, shipping satellite-imagery search on FAISS and fine-tuning a ViT for better retrieval.</p>
+          <p>Off the keyboard I'm almost always playing sports or watching a game. Competing taught me to love fast feedback loops, which is pretty much what good ML engineering is.</p>
+        </div>
+        <ul class="card focus" aria-label="Focus areas">
+          <li><span>Vector search</span><span>HNSW, FAISS</span></li>
+          <li><span>Retrieval &amp; RAG</span><span>Recall@k, evaluation</span></li>
+          <li><span>AI agents</span><span>tool calling, multi-agent</span></li>
+          <li><span>LLM fine-tuning</span><span>LoRA, QLoRA</span></li>
+          <li><span>ML backends</span><span>Flask, Docker, AWS</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="head"><h2>Experience</h2><p>Five roles since 2025, two of them running right now.</p></div>
+      <div class="card gantt" id="gantt" aria-hidden="true"></div>
+      <div id="jobs"></div>
+    </section>
+
+    <section id="projects">
+      <div class="head"><h2>Selected work</h2><p>Things I've built to understand how they really work.</p></div>
+      <div class="projs" id="projs"></div>
+    </section>
+
+    <section id="playground">
+      <div class="head"><h2>Playground</h2><p>Graph search you can steer.</p></div>
+      <div class="play">
+        <div class="card pfig" id="pfig" aria-label="Interactive graph search demo. Click or drag to move the query point."><svg id="psvg"></svg></div>
+        <div class="card pside">
+          <h3>How HNSW finds a neighbour</h3>
+          <p>This is the idea behind my HNSW engine, shrunk to 2D. Each of these 160 points links to its nearest neighbours. Search starts at the entry point and keeps hopping to whichever neighbour is closer to the query.</p>
+          <p><strong>Click or drag anywhere</strong> to move the query.</p>
+          <div class="nums">
+            <div><strong id="sHops">0</strong><span>hops</span></div>
+            <div class="hot"><strong id="sCmp">0</strong><span>distances computed</span></div>
+            <div><strong id="sOk">yes</strong><span>exact nearest found</span></div>
+          </div>
+          <button class="btn" type="button" id="reshuffle">New random points</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="toolkit">
+      <div class="head"><h2>Toolkit</h2><p>What I reach for.</p></div>
+      <div class="kit" id="kit"></div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let's talk</h2>
+      <p>About ML systems, research, or last night's game. My inbox is open.</p>
+      <a class="mailbig" href="mailto:vaidya.saiel1600@gmail.com">vaidya.saiel1600@gmail.com</a>
+      <div class="cta">
+        <button class="btn solid" type="button" id="copy">Copy email</button>
+        <a class="btn" href="https://linkedin.com/in/saiel-vaidya">LinkedIn</a>
+        <a class="btn" href="https://github.com/saielvaidya">GitHub</a>
+      </div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap"><span>© 2026 Saiel Vaidya</span><span>Press ⌘K or / to jump anywhere</span></div></footer>
+
+<dialog id="pal" aria-label="Quick menu">
+  <input id="q" type="text" placeholder="Jump to a section or run an action" autocomplete="off" aria-controls="cmds">
+  <ul id="cmds" role="listbox"></ul>
+</dialog>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
