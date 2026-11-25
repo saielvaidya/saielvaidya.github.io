@@ -1,13 +1,7 @@
-# Saiel Vaidya: portfolio
+# Saiel Vaidya
 
-A static site with no build step.
+Personal portfolio: AI engineering, ML systems and projects.
 
-- `index.html`: page structure and content
-- `style.css`: all styling (black theme, gold accent, Cinzel / Cormorant Garamond / Manrope)
-- `script.js`: point cloud, experience timeline, projects, playground, ⌘K menu
+**Live:** [saielvaidya.github.io](https://saielvaidya.github.io)
 
-## Run locally
-Open `index.html` in a browser, or in VS Code install the **Live Server** extension and click "Go Live".
-
-## Deploy free
-Push this folder to a GitHub repo named `saielvaidya.github.io`, then turn on Pages in the repo settings.
+Built from scratch with HTML, CSS and JavaScript.
